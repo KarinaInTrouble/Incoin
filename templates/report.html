@@ -1,0 +1,98 @@
+
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<head>
+    <meta charset="utf-8">
+    <html lang="ru">
+</head>
+<h1>Income Report</h1>
+<hr>
+<h2>Incomes</h2>
+<ul>
+    <li>Average Income: {{ average_income }}</li>
+    <li>Max Income: {{ max_income }}</li>
+    <li>Min Income: {{ min_income }}</li>
+    <li>Total Income: {{ total_income }}</li>
+</ul>
+
+<h2>Expenses</h2>
+<ul>
+    <li>Average Expense: {{ average_expense }}</li>
+    <li>Max Expense: {{ max_expense }}</li>
+    <li>Min Expense: {{ min_expense }}</li>
+    <li>Total Expense: {{ total_expense }}</li>
+</ul>
+
+<h2>Profit</h2>
+<p>Profit: {{ profit }}</p>
+
+<h2>Categories</h2>
+<ul>
+    <li>Category with Max Income: {{ category_max_income }}</li>
+    <li>Category with Min Income: {{ category_min_income }}</li>
+</ul>
+
+<h2>Projects</h2>
+<ul>
+    <li>Project with Max Income: {{ project_max_income }}</li>
+    <li>Project with Min Income: {{ project_min_income }}</li>
+</ul>
+
+<h2>Months</h2>
+<ul>
+    <li>Month with Max Income: {{ month_max_income }}</li>
+    <li>Month with Max Expense: {{ month_max_expense }}</li>
+    <li>Month with Min Income: {{ month_min_income }}</li>
+    <li>Month with Min Expense: {{ month_min_expense }}</li>
+</ul>
+
+<h2>Income Table</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Project</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for income in income_table_data %}
+        <tr>
+            <td>{{ income.amount }}</td>
+            <td>{{ income.category__name }}</td>
+            <td>{{ income.project__name }}</td>
+            <td>{{ income.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Expense Table</h2>
+<table>
+    <thead>
+        <tr>
+            <th>Amount</th>
+            <th>Category</th>
+            <th>Project</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for expense in expense_table_data %}
+        <tr>
+            <td>{{ expense.amount }}</td>
+            <td>{{ expense.category__name }}</td>
+            <td>{{ expense.project__name }}</td>
+            <td>{{ expense.date }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+
+{% endblock %}

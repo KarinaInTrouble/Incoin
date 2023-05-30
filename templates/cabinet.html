@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Главная</a></li>
+          <li>Личный кабинет</li>
+        </ol>
+        <h2>{{ user.get_username }}</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+
+                <div class="swiper-slide">
+                  <img src="{% static 'img/portfolio/portfolio-1.jpg' %}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="{% static 'img/portfolio/portfolio-2.jpg' %}" alt="">
+                </div>
+
+                <div class="swiper-slide">
+                  <img src="{% static 'img/portfolio/portfolio-3.jpg' %}" alt="">
+                </div>
+
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="portfolio-info">
+              <h3>{{ user.get_username }}</h3>
+              <ul>
+                <li><strong>Имя</strong>: Карина Джумабаева</li>
+                <li><strong>Email</strong>: elisadoollie@gmail.com</li>
+                <li><strong>Дата регистрации: </strong>: 01.05.2023</li>
+              </ul>
+            </div>
+            <div class="portfolio-description">
+              <h2>Веб-разработчик <i class="bi bi-pencil-square"></i></h2>
+              
+                <p> Фронтенд-разработка уровня Middle</p>
+                <p> Бэкенд-разработка уровня Junior</p>
+                <p> Веб-дизайн - продвинутый уровень </p>
+                <p> Консалтинг в IT - продвинутый уровень</p>
+              
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}

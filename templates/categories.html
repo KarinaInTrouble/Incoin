@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Главная</a></li>
+          <li>Категории</li>
+        </ol>
+        <h2>Карина Джумабаева</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+        <div class="container">
+          <div class="row gy-4">
+            <div class="col-lg-8">
+              <h2>Список категорий</h2>
+              <br>
+              <div class="container">
+                <div class="row">
+                  {% for q in query %}
+                  <div class="col-3">
+                    <div class="card text-center">
+                      <div class="card-body">
+                        <img class="card-img" src="{{ q.icon.url }}">
+                        <h5 class="card-title">{{ q.name }}</h5>
+                        <a class="btn btn-danger" href="{% url 'delete_category' q.id %}">Удалить</a>
+                      </div>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+            </div>
+      
+            <div class="col-lg-4">
+              <br>
+              <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <button class="btn btn-primary" type="submit">Добавить</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}

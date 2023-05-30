@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <ol>
+          <li><a href="index.html">Главная</a></li>
+          <li>Задачи</li>
+        </ol>
+        <h2>Карина Джумабаева</h2>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    <!-- ======= Portfolio Details Section ======= -->
+    <section id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+
+        <div class="row gy-4">
+
+          <div class="col-lg-8">
+            <h2>Календарь задач</h2>
+            <br>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th>Задача</th>
+                    <th>Категория</th>
+                    <th>Дата</th>
+                    <th></th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Задача 1</td>
+                    <td>Не срочно</td>
+                    <td>2023-05-05</td>
+                    <td><a href="#">Редактировать</a></td>
+                    <td><a href="#">Удалить</a></td>
+                  </tr>
+                  <tr>
+                    <td>Задача 2</td>
+                    <td class="table-danger">Срочно</td>
+                    <td>2023-05-06</td>
+                    <td><a href="#">Редактировать</a></td>
+                    <td><a href="#">Удалить</a></td>
+                  </tr>
+                  <tr>
+                    <td>Задача 3</td>
+                    <td>Важно</td>
+                    <td>2023-05-07</td>
+                    <td><a href="#">Редактировать</a></td>
+                    <td><a href="#">Удалить</a></td>
+                  </tr>
+                  <tr>
+                    <td>Задача 4</td>
+                    <td>Не срочно</td>
+                    <td>2023-05-08</td>
+                    <td><a href="#">Редактировать</a></td>
+                    <td><a href="#">Удалить</a></td>
+                  </tr>
+                  <tr>
+                    <td>Задача 5</td>
+                    <td class="table-danger">Срочно</td>
+                    <td>2023-05-09</td>
+                    <td><a href="#">Редактировать</a></td>
+                    <td><a href="#">Удалить</a></td>
+                  </tr>
+                  <tr>
+                    <td>Задача 6</td>
+                    <td>Важно</td>
+                    <td>2023-05-10</td>
+                    <td><a href="#">Редактировать</a></td>
+                    <td><a href="#">Удалить</a></td>
+                  </tr>
+                  <tr>
+                    <td>Задача 7</td>
+                    <td class="table-danger">Срочно</td>
+                    <td>2023-05-11</td>
+                    <td><a href="#">Редактировать</a></td>
+                    <td><a href="#">Удалить</a></td>
+                  </tr>
+                </tbody>
+              </table>
+
+          
+            
+          </div>
+
+          <div class="col-lg-4">
+            <br>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="title">Название задачи:</label>
+                  <input type="text" class="form-control" id="title" name="title" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="description">Описание задачи:</label>
+                  <textarea class="form-control" id="description" name="description" required></textarea>
+                </div>
+                <div class="form-group">
+                    <br>
+                  <label for="date">Дата выполнения задачи:</label>
+                  <input type="date" class="form-control" id="date" name="date" required>
+                </div>
+                <br>
+                <div class="form-group">
+                  <label for="urgency">Срочность:</label>
+                  <select class="form-control" id="urgency" name="urgency" required>
+                    <option value="">Выберите срочность</option>
+                    <option value="1">Не срочно</option>
+                    <option value="2">Важно</option>
+                    <option value="3">Срочно</option>
+                  </select>
+                </div>
+                <br>
+                <button type="submit" class="btn btn-primary">Добавить</button>
+              </form>
+              
+
+            <div class="portfolio-info" hidden >
+              <h3>{{ user.get_username }}</h3>
+              <ul>
+                <li><strong>Имя</strong>: Карина Джумабаева</li>
+                <li><strong>Email</strong>: elisadoollie@gmail.com</li>
+                <li><strong>Дата регистрации: </strong>: 01.05.2023</li>
+              </ul>
+            </div>
+            <div class="portfolio-description" hidden>
+              <h2>Веб-разработчик <i class="bi bi-pencil-square"></i></h2>
+              
+                <p> Фронтенд-разработка уровня Middle</p>
+                <p> Бэкенд-разработка уровня Junior</p>
+                <p> Веб-дизайн - продвинутый уровень </p>
+                <p> Консалтинг в IT - продвинутый уровень</p>
+              
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Details Section -->
+
+  </main><!-- End #main -->
+
+{% endblock %}
